@@ -1,0 +1,28 @@
+<view class="container">
+
+  <button bindtap="pay">testPay</button>
+  <!-- 登录组件 https://developers.weixin.qq.com/miniprogram/dev/api/wx.getUserInfo.html -->  
+  <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">授权登录</button>
+  <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bind:getuserinfo="shareInfo">shareInfo</button>
+  <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bind:getuserinfo="yjfk">yjfk</button>
+  
+  <!-- 登录后使用open-data -->
+  <view class="avatar-container avatar-position">
+   <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+     <!--<image src="{{userInfo.avatarUrl}}" wx:if="{{hasUserInfo}}" class="avatar" />--> 
+      <open-data wx:if="{{hasUserInfo}}" type="userNickName"></open-data>
+  </view>
+
+<view class='share'>
+   <view class='like'>
+      <view class='iconfont icon-aixin'></view>
+   </view>
+   <view class='weixin'>
+       <button open-type="share" class='iconfont icon-weixin'>分享</button>
+       <button open-type='share' type='warn' size="mini" plain="true" id='btnShare0'>推荐给好友</button>
+     <button bindtap="queryRequest">queryRequest</button>
+     <button bindtap="payNow">payNow</button>
+
+   </view>
+</view>
+</view>
